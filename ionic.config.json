@@ -1,0 +1,7 @@
+{
+  "name": "RunThrough",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
