@@ -52,20 +52,25 @@ export class AppComponent {
         zoom: 'no',
         enableViewportScale: 'no',
       });
-  
+    
       browser.on('loadstop').subscribe(() => {
         this.dismissLoader();
       });
-  
+    
       browser.on('loaderror').subscribe(() => {
         this.dismissLoader();
       });
-  
+    
+      // Fallback timeout in case iOS doesn't fire the events
+      setTimeout(() => {
+        this.dismissLoader();
+      }, 10000);
+    
       browser.on('exit').subscribe(() => {
         this.isBrowserOpen = false;
         CapacitorApp.exitApp();
       });
-    }, 200); // small delay (can be 100–300ms)
+    }, 200);
   }
 
   async dismissLoader() {
